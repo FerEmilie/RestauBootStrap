@@ -1,1 +1,2 @@
-config
+config/connection.php
+config/securite.php
