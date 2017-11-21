@@ -1,0 +1,125 @@
+#form{
+ background-color: lightgrey;
+}
+.items {
+display: flex;
+flex-direction: column;
+padding: 20px;
+counter-reset: done-items undone-items;
+}
+
+.items h2 {
+position: relative;
+margin: 0;
+padding: 10px 0;
+font-size: 1.2em;
+}
+
+.items h2::before {
+content: '';
+display: block;
+position: absolute;
+top: 10px;
+bottom: 10px;
+left: -20px;
+width: 5px;
+background-color: #435757;
+}
+
+.items h2::after {
+display: block;
+float: right;
+font-weight: normal;
+}
+
+.done {
+order: 1;
+}
+
+.done::after {
+content: ' (' counter(done-items) ')';
+}
+
+.undone {
+order: 3;
+}
+
+.undone::after {
+content: ' (' counter(undone-items) ')';
+}
+
+.items input {
+display: block;
+height: 53px;
+margin: 0 0 -53px -9999px;
+order: 4;
+outline: none;
+counter-increment: undone-items;
+}
+
+.items input:checked {
+order: 2;
+counter-increment: done-items;
+}
+
+.items label {
+display: block;
+position: relative;
+padding: 15px 0 15px 45px;
+border-top: 1px dashed #fff;
+order: 4;
+cursor: pointer;
+animation: undone .5s;
+}
+
+.items label::before {
+content: "\f10c"; /* circle outline */
+display: block;
+position: absolute;
+top: 11px;
+left: 10px;
+font: 1.5em 'FontAwesome';
+}
+
+.items label:hover, .items input:focus + label {
+background-color: rgba(255, 255, 255, .2);
+}
+
+.items input:checked + label {
+order: 2;
+animation: done .5s;
+}
+
+.items input:checked + label::before {
+content: '\f058'; /* circle checkmark */
+}
+
+@keyframes done {
+0% {
+opacity: 0;
+background-color: rgba(255, 255, 255, .4);
+transform: translateY(20px);
+}
+50% {
+opacity: 1;
+background-color: rgba(255, 255, 255, .4);
+}
+}
+
+@keyframes undone {
+0% {
+opacity: 0;
+background-color: rgba(255, 255, 255, .4);
+transform: translateY(-20px);
+}
+50% {
+opacity: 1;
+background-color: rgba(255, 255, 255, .4);
+}
+}
+.valider{
+  border: 0.5px solid grey;
+  border-radius: 40px;
+  text-align: center;
+  float: right;
+}
