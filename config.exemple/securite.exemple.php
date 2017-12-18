@@ -1,6 +1,6 @@
 <?php
 $serverName = 'localhost';
-$dbname = 'restaurant';
-$login = 'root';
+$dbname = '';
+$login = '';
 $mdp = '';
  ?>
